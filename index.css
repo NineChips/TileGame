@@ -5,34 +5,147 @@
   --white: #ffffff;
 }
 body{
-  background-color:black;
+  background-color:white;
 }
-
 .game-container {
-    width: 400px;
-    margin: 40px auto;
-    text-align: center;
+  width: 400px;
+  margin: 150px auto;
+  text-align: center;
 }
 
 .game-board {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px;
-    width: 300px;
-    margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #fff;
 }
 
-.tile {
-    width: 60px;
-    height: 60px;
-    border-radius: 5px;
-    cursor: pointer;
+
+.player {
+  position: absolute;
+  top: 60px;
+  left: 50px;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  Z-index:100;
 }
+
+.player-body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+.dash {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #00ff00;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00ff00;
+}
+
+.shield {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: #0000ff;
+  border-radius: 50%;
+  box-shadow: 0 0 20px #0000ff;
+}
+
+.special-attack {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #ff0000;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ff0000;
+}
+
+
+/*tile*/
+
+
+.tile {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  border-radius: 5px;
+  margin: 5px;
+    transform:
+    rotateX(51deg)
+    rotateZ(43deg);
+  transform-style: preserve-3d;
+  
+  box-shadow:
+     1px 1px 0 1px var(--glow-color),
+    -1px 0 28px 0 rgba(34, 33, 81, 0.01),
+    28px 28px 28px 0 rgba(34, 33, 81, 0.25);
+  transition:
+    .4s ease-in-out transform,
+    .4s ease-in-out box-shadow;
+    &:hover {
+    transform:
+      translate3d(0px, 5px, 0px)
+      rotateX(51deg)
+      rotateZ(43deg);
+    box-shadow:
+      -1px 0 28px 0 var(--glow-color, #fff),
+      10px 10px 10px -10px var(--glow-color, #fff);
+  }
+}
+
+
+
+.tile::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--glow-color);
+  
+  border-radius: 5px;
+}
+
+.tile::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--glow-color);
+  
+  border-radius: 5px;
+}
+
 
 
 .tile.selected {
-  animation: pulse 1s infinite;
+  
+  transform: translate3d(0, 5px, 0) rotateX(51deg)
+      rotateZ(43deg);; 
+  
+  
 }
+
+
 
 
 .tile.red {
@@ -67,43 +180,166 @@ body{
 }
 .tile.matched {
   animation: shrink 0.7s forwards;
+  
 }
+
 .tile.shake {
   animation: shake 0.2s forwards;
+  
 }
+
+
 
 @keyframes shake {
   0% {
-    transform: translateX(0);
+    transform: rotateX(51deg) rotateZ(43deg) translateX(0) translate3d(5px, 5px, 0px);;
+   
   }
   25% {
-    transform: translateX(-1px);
+    transform: rotateX(51deg) rotateZ(43deg) translateX(-3px) translate3d(5px, 5px, 0px);;
   }
   50% {
-    transform: translateY(1px);
+    transform: rotateX(51deg) rotateZ(43deg) translateY(3px) translate3d(5px, 5px, 0px);;
   }
   75% {
-    transform: translateX(-1px);
+    transform: rotateX(51deg) rotateZ(43deg) translateX(-3px) translate3d(3px, 3px, 0px);;
   }
   100% {
-    transform: translateX(0);
+    transform: rotateX(51deg) rotateZ(43deg) translateX(0) translate3d(1px, 1px, 0px);;
   }
 }
 
 @keyframes shrink {
   0% {
-    transform: scale(1);
+    transform: rotateX(51deg) rotateZ(43deg) scale(1) translate3d(5px,5px, 0px);
   }
   5%{
-    transform: scale(1);
+    transform: rotateX(51deg) rotateZ(43deg) scale(1) translate3d(5px, 5px, 0px);
   }
   15%{
-    transform: scale(1.1);
+    transform: rotateX(51deg) rotateZ(43deg) scale(1.1) translate3d(5px, 5px, 0px);
   }
   80% {
-    transform: scale(0);
+    transform: rotateX(51deg) rotateZ(43deg) scale(0) translate3d(5px, 5px, 0px);
   }
 }
 .glow {
   box-shadow: 0 0 13px rgba(0, 0, 0, 0.2), 0 0 16px var(--glow-color, #fff);
+  -1px 2px 30px 0 var(--glow-color, #fff);
 }
+
+.shadow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.shadow-body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 140px;
+  height: 80px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+.shadow-eyes {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: 15px;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: #ff0000;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+.shadow-eyes.left {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left:-40px;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: #ff0000;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+/* shadattack */
+
+.tendril {
+  position: absolute;
+  width: 10px;
+  height: 50px;
+  background-color: #ff0000;
+  transform: rotate(45deg);
+  animation: tendril 1s forwards;
+}
+
+@keyframes tendril {
+  0% {
+    transform: rotate(45deg) translateX(0);
+  }
+  100% {
+    transform: rotate(45deg) translateX(100px);
+  }
+}
+
+.blast {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #ff0000;
+  border-radius: 50%;
+  animation: blast 1s forwards;
+}
+
+@keyframes blast {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(5);
+  }
+}
+
+.wave {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #ff0000;
+  opacity: 0.5;
+  animation: wave 1s forwards;
+}
+
+@keyframes wave {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(2);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
