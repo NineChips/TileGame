@@ -126,9 +126,7 @@ function movePlayer(dx, dy) {
   player.style.left = `${playerX}px`;
 }
 
-document.querySelector('.player-body').addEventListener('animationiteration', () => {
-  document.querySelector('.player-body').style.transform = `translate(${Math.random() * 5 - 2.5}px, ${Math.random() * 5 - 2.5}px)`;
-});
+
 
 
 
@@ -441,7 +439,9 @@ function resetGame() {
     createGameBoard();
 }
 
-
+document.querySelector('.player-body').addEventListener('animationiteration', () => {
+  document.querySelector('.player-body').style.transform = `translate(${Math.random() * 5 - 2.5}px, ${Math.random() * 5 - 2.5}px)`;
+});
 
 resetButton.addEventListener('click', resetGame);
 createGameBoard();
