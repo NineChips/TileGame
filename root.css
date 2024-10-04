@@ -1,0 +1,109 @@
+:root {
+  --blue: #13326D;
+  --light-cyan: #60E0EB;
+  --gray: #e2f0f1;
+  --white: #ffffff;
+}
+body{
+  background-color:black;
+}
+
+.game-container {
+    width: 400px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.tile {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.tile.selected {
+  animation: pulse 1s infinite;
+}
+
+
+.tile.red {
+    background-color: var(--light-cyan);
+}
+
+.tile.blue {
+    background-color: var(--blue);
+}
+
+.tile.green {
+    background-color: var(--gray);
+}
+
+.tile.yellow {
+    background-color: var(--white);
+}
+
+.reset-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+ 
+}
+
+.reset-button:hover {
+    background-color: #3e8e41;
+}
+.tile.matched {
+  animation: shrink 0.7s forwards;
+}
+.tile.shake {
+  animation: shake 0.2s forwards;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-1px);
+  }
+  50% {
+    transform: translateY(1px);
+  }
+  75% {
+    transform: translateX(-1px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes shrink {
+  0% {
+    transform: scale(1);
+  }
+  5%{
+    transform: scale(1);
+  }
+  15%{
+    transform: scale(1.1);
+  }
+  80% {
+    transform: scale(0);
+  }
+}
+.glow {
+  box-shadow: 0 0 13px rgba(0, 0, 0, 0.2), 0 0 16px var(--glow-color, #fff);
+}
