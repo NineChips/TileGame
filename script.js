@@ -295,9 +295,7 @@ function checkMatch() {
 }
 // shadow start
 
-document.querySelector('.shadow-body').addEventListener('animationiteration', () => {
-  document.querySelector('.shadow-body').style.transform = `translate(${Math.random() * 10 - 5}px, ${Math.random() * 10 - 5}px)`;
-});
+
 
 document.querySelector('.shadow-eyes').addEventListener('animationiteration', () => {
   document.querySelector('.shadow-eyes').style.transform = `scale(${Math.random() * 1.5 + 1})`;
