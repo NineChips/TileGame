@@ -122,8 +122,14 @@ function movePlayer(dx, dy) {
   previousPlayerY = playerY;
   playerX += dx;
   playerY += dy;
-  player.style.top = `${playerY}px`;
-  player.style.left = `${playerX}px`;
+
+  
+  const tileSize = 100; 
+  const centerX = playerX - (tileSize / 2);
+  const centerY = playerY - (tileSize / 2);
+
+  player.style.top = `${centerY}px`;
+  player.style.left = `${centerX}px`;
 }
 
 
