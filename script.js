@@ -92,18 +92,6 @@ const playerSpeed = 5;
 
 document.addEventListener('keydown', (event) => {
   switch (event.key) {
-    case 'w':
-      movePlayer(0, -100);
-      break;
-    case 'a':
-      movePlayer(-100, 0);
-      break;
-    case 's':
-      movePlayer(0, 100);
-      break;
-    case 'd':
-      movePlayer(100, 0);
-      break;
     case 'q':
       dash();
       break;
@@ -117,21 +105,12 @@ document.addEventListener('keydown', (event) => {
 });
 
 
-function movePlayer(dx, dy) {
-  previousPlayerX = playerX;
-  previousPlayerY = playerY;
-  playerX += dx;
-  playerY += dy;
-
-  
-  const tileSize = 100; 
-  const centerX = playerX - (tileSize / 2);
-  const centerY = playerY - (tileSize / 2);
-
-  player.style.top = `${centerY}px`;
-  player.style.left = `${centerX}px`;
-}
-
+document.addEventListener('mousemove', (event) => {
+    const tileSize = 100; // Assuming your tiles are of this size
+    playerX = event.clientX - (tileSize / 2);
+    playerY = event.clientY - (tileSize / 2);
+    updatePlayerPosition();
+});
 
 
 
