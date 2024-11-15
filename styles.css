@@ -25,28 +25,6 @@ body{
 }
 
 
-.player {
-  position: absolute;
-  top: 60px;
-  left: 50px;
-  width: 20px;
-  height: 20px;
-  background-color: red;
-  border-radius: 50%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  Z-index:100;
-}
-
-.player-body {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 10px;
-  height: 10px;
-  background-color: #fff;
-  border-radius: 50%;
-}
  .cursor {
             position: absolute;
             width: 10px; /* Size of the red dot */
