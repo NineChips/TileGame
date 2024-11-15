@@ -1,0 +1,30 @@
+.cursor {
+    position: absolute;
+    width: 10px; /* Size of the red dot */
+    height: 10px; /* Size of the red dot */
+    background-color: red; /* Color of the dot */
+    border-radius: 50%; /* Make it circular */
+    pointer-events: none; /* Prevent the dot from interfering with mouse events */
+    transform: translate(-50%, -50%); /* Center the dot on the cursor */
+}
+
+.hitbox {
+    position: absolute;
+    width: 30px; /* Size of the hitbox */
+    height: 30px; /* Size of the hitbox */
+    background-color: rgba(255, 0, 0, 0.5); /* Semi-transparent red for visibility */
+    border-radius: 50%; /* Make it circular */
+    pointer-events: none; /* Prevent the hitbox from interfering with mouse events */
+}
+
+@keyframes shake {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(-5px, 0); }
+    50% { transform: translate(5px, 0); }
+    75% { transform: translate(-5px, 0); }
+    100% { transform: translate(0, 0); }
+}
+
+.shake {
+    animation: shake 0.5s ease;
+}
