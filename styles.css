@@ -47,6 +47,16 @@ body{
   background-color: #fff;
   border-radius: 50%;
 }
+ .cursor {
+            position: absolute;
+            width: 10px; /* Size of the red dot */
+            height: 10px; /* Size of the red dot */
+            background-color: red; /* Color of the dot */
+            border-radius: 50%; /* Make it circular */
+            pointer-events: none; /* Prevent the dot from interfering with mouse events */
+            transform: translate(-50%, -50%); /* Center the dot on the cursor */
+        }
+
 .dash {
   position: absolute;
   width: 20px;
